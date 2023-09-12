@@ -19,7 +19,7 @@ public class LocationResponseDto {
     private String description;
     private Double latitude;
     private Double longitude;
-    private Set<Review> reviews;
-    private Set<Preference> preferences;
+    private Set<ReviewResponseDto> reviews;
+    private Set<PreferencesResponseDto> preferences;
     private UserResponseDto userResponseDto;
 }
