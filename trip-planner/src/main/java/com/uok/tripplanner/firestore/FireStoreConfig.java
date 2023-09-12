@@ -1,2 +1,4 @@
-package com.uok.tripplanner.firestore;public class FireStoreConfig {
+package com.uok.tripplanner.firestore;
+
+public class FireStoreConfig {
 }
