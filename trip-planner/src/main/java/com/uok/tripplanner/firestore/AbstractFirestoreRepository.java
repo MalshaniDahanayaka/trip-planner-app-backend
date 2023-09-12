@@ -1,2 +1,4 @@
-package com.uok.tripplanner.firestore;public interface AbstractFirestoreRepository {
+package com.uok.tripplanner.firestore;
+
+public interface AbstractFirestoreRepository {
 }

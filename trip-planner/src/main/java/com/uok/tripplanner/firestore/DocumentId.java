@@ -1,2 +1,4 @@
-package com.uok.tripplanner.firestore;public class DocumentId {
+package com.uok.tripplanner.firestore;
+
+public class DocumentId {
 }
