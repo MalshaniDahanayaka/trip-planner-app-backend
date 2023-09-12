@@ -127,6 +127,64 @@
 			"name": "location service",
 			"item": [
 				{
+					"name": "review service",
+					"item": [
+						{
+							"name": "add review",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"review\" : \"this place is awesome\",\n     \"rating\" : 5,\n     \"locationId\" : 2,\n     \"userEmail\": {{email}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/location/review",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"location",
+										"review"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "add location",
 					"event": [
 						{
@@ -150,7 +208,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"locationName\": \"colombo\",\n    \"description\" : \"colombo is a city\",\n    \"latitude\" : 2322.333,\n    \"longitude\" : 3232.232,\n    \"userEmail\": {{email}}\n}",
+							"raw": "{\n    \"locationName\": \"england\",\n    \"description\" : \"Uk is a country\",\n    \"latitude\" : 2322.333,\n    \"longitude\" : 3232.232,\n    \"userEmail\": {{email}},\n    \"preferences\": [ \"#Country\",\"#ColdCountry\"]\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -214,7 +272,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/location/1",
+							"raw": "{{url}}/api/v1/location/2",
 							"host": [
 								"{{url}}"
 							],
@@ -222,7 +280,7 @@
 								"api",
 								"v1",
 								"location",
-								"1"
+								"2"
 							],
 							"query": [
 								{
@@ -271,7 +329,7 @@
 		},
 		{
 			"key": "email",
-			"value": "\"user@gmail.com\"",
+			"value": "\"user1@gmail.com\"",
 			"type": "string"
 		},
 		{
