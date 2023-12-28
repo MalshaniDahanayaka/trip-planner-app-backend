@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class TripPlannerDto {
 
+    private Long tripPlanId;
     private String journeyStartingPlace;
     private String startingDate;
     private String startingTime;

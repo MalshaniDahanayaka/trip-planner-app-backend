@@ -1,12 +1,9 @@
-package com.uok.tripplanner.locationService.dto;
+package com.uok.tripplanner.locationService.dto.Request;
 
-
-import com.uok.tripplanner.locationService.entity.Preference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +14,9 @@ public class LocationDto {
     private Double latitude;
     private Double longitude;
     private String userEmail;
+    private String averageAllocatedTime;
     private List<String> preferences;
+    private List<String> events;
+    private List<String> images;
 
 }

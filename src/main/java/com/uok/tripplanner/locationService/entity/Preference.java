@@ -1,12 +1,11 @@
 package com.uok.tripplanner.locationService.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+
+@Setter
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +17,7 @@ public class Preference {
     @GeneratedValue
     private Integer id;
     private String preference;
+
 
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)

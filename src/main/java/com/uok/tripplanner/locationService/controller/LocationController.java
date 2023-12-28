@@ -1,16 +1,13 @@
 package com.uok.tripplanner.locationService.controller;
 
-import com.uok.tripplanner.locationService.dto.LocationDto;
-import com.uok.tripplanner.locationService.dto.LocationResponseDto;
-import com.uok.tripplanner.locationService.dto.ReviewDto;
-import com.uok.tripplanner.locationService.entity.Location;
+import com.uok.tripplanner.locationService.dto.Request.LocationDto;
+import com.uok.tripplanner.locationService.dto.Response.LocationResponseDto;
+import com.uok.tripplanner.locationService.dto.Request.ReviewDto;
 import com.uok.tripplanner.locationService.service.LocationService;
 import com.uok.tripplanner.locationService.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1/location")

@@ -1,8 +1,5 @@
-package com.uok.tripplanner.locationService.dto;
+package com.uok.tripplanner.locationService.dto.Response;
 
-import com.uok.tripplanner.authService.user.User;
-import com.uok.tripplanner.locationService.entity.Preference;
-import com.uok.tripplanner.locationService.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +16,11 @@ public class LocationResponseDto {
     private String description;
     private Double latitude;
     private Double longitude;
+    private String averageAllocatedTime;
     private Set<ReviewResponseDto> reviews;
+    private Set<EventResponseDto> events;
     private Set<PreferencesResponseDto> preferences;
+    private Set<LocationImageResponseDto> locationImages;
     private UserResponseDto userResponseDto;
+
 }

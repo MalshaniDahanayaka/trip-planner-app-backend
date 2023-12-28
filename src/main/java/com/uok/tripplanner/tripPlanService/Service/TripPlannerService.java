@@ -1,13 +1,10 @@
 package com.uok.tripplanner.tripPlanService.Service;
 
-import com.uok.tripplanner.authService.user.Role;
 import com.uok.tripplanner.authService.user.User;
 import com.uok.tripplanner.authService.user.UserRepository;
-import com.uok.tripplanner.tripPlanService.Repository.TripPlannerRepository;
+import com.uok.tripplanner.tripPlanService.Repository.ITripPlannerRepository;
 import com.uok.tripplanner.tripPlanService.dto.TripPlannerDto;
 import com.uok.tripplanner.tripPlanService.entity.TripPlans;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +13,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public record TripPlannerService(TripPlannerRepository tripPlannerRepository, UserRepository userRepository) {
+public record TripPlannerService(ITripPlannerRepository tripPlannerRepository, UserRepository userRepository) {
 
     public Optional<TripPlannerDto> getTripPlan(Long id) {
         try {
@@ -25,6 +22,7 @@ public record TripPlannerService(TripPlannerRepository tripPlannerRepository, Us
                 return Optional.empty();
             }
             TripPlannerDto tripPlannerDto = TripPlannerDto.builder()
+                    .tripPlanId(tripPlan.get().getId())
                     .journeyStartingPlace(tripPlan.get().getJourneyStartingPlace())
                     .startingDate(tripPlan.get().getStartingDate())
                     .startingTime(tripPlan.get().getStartingTime())
@@ -87,6 +85,7 @@ public record TripPlannerService(TripPlannerRepository tripPlannerRepository, Us
                 return Optional.empty();
             }
             List<TripPlannerDto> tripPlannerDtos = tripPlans.stream().map(tripPlan -> TripPlannerDto.builder()
+                    .tripPlanId(tripPlan.getId())
                     .journeyStartingPlace(tripPlan.getJourneyStartingPlace())
                     .startingDate(tripPlan.getStartingDate())
                     .startingTime(tripPlan.getStartingTime())

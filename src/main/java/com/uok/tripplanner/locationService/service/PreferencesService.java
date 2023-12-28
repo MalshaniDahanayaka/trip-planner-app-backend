@@ -12,24 +12,7 @@ import java.util.Set;
 @Service
 public record PreferencesService (IPreferenceRepository preferenceRepository){
 
-    public void savePreferences(List<String> preferencesList, Location savedLocation){
-
-        Set<Preference> preferences = new HashSet<>();
-
-        for (String preference : preferencesList) {
-            Preference pref = Preference.builder()
-                    .preference(preference)
-                    .location(savedLocation)
-                    .build();
-            preferences.add(pref);
-        }
-
-        try{
-        preferenceRepository.saveAll(preferences);
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
+    public void addLocationPreferences(List<String> preferencesList, Location savedLocation){
 
     }
 }

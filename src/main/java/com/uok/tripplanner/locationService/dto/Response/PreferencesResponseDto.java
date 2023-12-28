@@ -1,4 +1,4 @@
-package com.uok.tripplanner.locationService.dto;
+package com.uok.tripplanner.locationService.dto.Response;
 
 
 import lombok.AllArgsConstructor;

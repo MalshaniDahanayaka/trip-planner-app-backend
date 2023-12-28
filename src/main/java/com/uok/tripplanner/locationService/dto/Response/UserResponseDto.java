@@ -1,4 +1,4 @@
-package com.uok.tripplanner.locationService.dto;
+package com.uok.tripplanner.locationService.dto.Response;
 
 import com.uok.tripplanner.authService.user.Role;
 import lombok.AllArgsConstructor;

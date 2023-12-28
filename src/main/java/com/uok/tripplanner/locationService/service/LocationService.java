@@ -2,10 +2,10 @@ package com.uok.tripplanner.locationService.service;
 
 import com.uok.tripplanner.authService.user.User;
 import com.uok.tripplanner.authService.user.UserRepository;
-import com.uok.tripplanner.locationService.dto.*;
-import com.uok.tripplanner.locationService.entity.Location;
-import com.uok.tripplanner.locationService.entity.Preference;
-import com.uok.tripplanner.locationService.entity.Review;
+import com.uok.tripplanner.locationService.dto.Request.LocationDto;
+import com.uok.tripplanner.locationService.dto.Response.*;
+import com.uok.tripplanner.locationService.entity.*;
+import com.uok.tripplanner.locationService.repository.ILocationImagesRepository;
 import com.uok.tripplanner.locationService.repository.ILocationRepository;
 import com.uok.tripplanner.locationService.repository.IPreferenceRepository;
 import com.uok.tripplanner.locationService.repository.IReviewRepository;
@@ -21,7 +21,10 @@ public record LocationService(
         UserRepository userRepository,
         IReviewRepository reviewRepository,
         PreferencesService preferencesService,
-        IPreferenceRepository preferenceRepository) {
+        LocationImagesService locationImagesService,
+        IPreferenceRepository preferenceRepository,
+        ILocationImagesRepository locationImagesRepository,
+        EventService eventService) {
 
     public String saveLocation(LocationDto locationDto) {
 
@@ -43,34 +46,73 @@ public record LocationService(
                 .description(locationDto.getDescription())
                 .latitude(locationDto.getLatitude())
                 .longitude(locationDto.getLongitude())
+                .averageAllocatedTime(locationDto.getAverageAllocatedTime())
+                .rating(0.0)
                 .user(user)
                 .build();
 
-        Location savedLocation = iLocationRepository.save(location);
+        try {
+            Location savedLocation = iLocationRepository.saveAndFlush(location);
+            if(savedLocation.getId() == null){
+                return "Error occurred while saving location";
+            }
+            savedLocation.setPreferences(
+                    locationDto.getPreferences().stream().map(preference -> Preference.builder()
+                            .preference(preference)
+                            .location(savedLocation)
+                            .build()).collect(java.util.stream.Collectors.toSet())
+            );
+            savedLocation.setLocationImages(
+                    locationDto.getImages().stream().map(image -> LocationImage.builder()
+                            .image(image)
+                            .location(savedLocation)
+                            .build()).collect(java.util.stream.Collectors.toSet())
+            );
+            savedLocation.setEvents(
+                    locationDto.getEvents().stream().map(event -> Event.builder()
+                            .eventName(event)
+                            .location(savedLocation)
+                            .build()).collect(java.util.stream.Collectors.toSet())
+            );
+            iLocationRepository.save(savedLocation);
 
-        preferencesService.savePreferences(locationDto.getPreferences(), savedLocation);
+        }catch (Exception e){
+            log.error("Error occurred while saving location", e);
+            return "Error occurred while saving location";
+        }
+
+
 
         return "success";
     }
 
     public LocationResponseDto getLocation(Integer id) {
+
         log.info("LocationService: getLocation");
         Location location = iLocationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Location not found with ID: " + id));
 
-        Set<Review> reviews = reviewRepository.findAllByLocationId(id);
-        Set<Preference> preferences = preferenceRepository.findAllByLocationId(id);
-
-        Set<ReviewResponseDto> reviewResponseDtos = reviews.stream().map(review -> ReviewResponseDto.builder()
+        Set<ReviewResponseDto> reviewResponseDto = location.getReviews().stream().map(review -> ReviewResponseDto.builder()
                 .review(review.getReview())
                 .rating(review.getRating())
                 .userEmail(review.getUser().getEmail())
                 .build()).collect(java.util.stream.Collectors.toSet());
 
-        Set<PreferencesResponseDto> preferencesResponseDtos = preferences.stream().map(preference -> PreferencesResponseDto.builder()
+        Set<PreferencesResponseDto> preferencesResponseDto = location.getPreferences().stream().map(preference -> PreferencesResponseDto.builder()
                 .id(preference.getId())
                 .preference(preference.getPreference())
                 .build()).collect(java.util.stream.Collectors.toSet());
+
+        Set<LocationImageResponseDto> locationImageResponseDto = location.getLocationImages().stream().map(locationImage -> LocationImageResponseDto.builder()
+                .id(locationImage.getId())
+                .image(locationImage.getImage())
+                .build()).collect(java.util.stream.Collectors.toSet());
+
+        Set<EventResponseDto> eventResponseDto = location.getEvents().stream().map(event -> EventResponseDto.builder()
+                .id(event.getId())
+                .eventName(event.getEventName())
+                .build()).collect(java.util.stream.Collectors.toSet());
+
 
 
         return LocationResponseDto.builder()
@@ -79,8 +121,10 @@ public record LocationService(
                 .description(location.getDescription())
                 .latitude(location.getLatitude())
                 .longitude(location.getLongitude())
-                .reviews(reviewResponseDtos)
-                .preferences(preferencesResponseDtos)
+                .reviews(reviewResponseDto)
+                .events(eventResponseDto)
+                .preferences(preferencesResponseDto)
+                .locationImages(locationImageResponseDto)
                 .userResponseDto(new UserResponseDto(
                         location.getUser().getFirstname(),
                         location.getUser().getLastname(),
