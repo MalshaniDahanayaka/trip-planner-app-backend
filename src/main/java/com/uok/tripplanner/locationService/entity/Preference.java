@@ -22,5 +22,4 @@ public class Preference {
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
-
 }

@@ -32,7 +32,9 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/api/v1/auth/**"
+                        "/api/v1/auth/**",
+                          "/api/v1/trip-plan/*",
+                        "api/v1//location/*"
                 )
                 .permitAll()
 
