@@ -26,11 +26,9 @@ com/uok/tripplanner/userProfileService/controller/UserProfileController.class
 com/uok/tripplanner/userProfileService/dto/UserProfileUpdate.class
 com/uok/tripplanner/authService/auth/AuthenticationResponse.class
 com/uok/tripplanner/locationService/dto/Request/LocationDto.class
-com/uok/tripplanner/firestore/FireStoreConfig.class
 com/uok/tripplanner/tripPlanService/dto/TripPlannerDto.class
 com/uok/tripplanner/locationService/service/LocationService.class
 com/uok/tripplanner/locationService/dto/Response/LocationResponseDto.class
-com/uok/tripplanner/firestore/AbstractFirestoreRepository.class
 com/uok/tripplanner/authService/config/JwtService.class
 com/uok/tripplanner/tripPlanService/controller/TripPlannerController.class
 com/uok/tripplanner/locationService/dto/Response/ReviewResponseDto.class
@@ -42,7 +40,6 @@ com/uok/tripplanner/authService/auth/AuthenticationRequest$AuthenticationRequest
 com/uok/tripplanner/locationService/dto/Response/EventResponseDto$EventResponseDtoBuilder.class
 com/uok/tripplanner/locationService/entity/Location.class
 com/uok/tripplanner/authService/user/Permission.class
-com/uok/tripplanner/firestore/DocumentId.class
 com/uok/tripplanner/authService/user/User$UserBuilder.class
 com/uok/tripplanner/tripPlanService/Service/TripPlannerService.class
 com/uok/tripplanner/locationService/dto/Response/UserResponseDto.class

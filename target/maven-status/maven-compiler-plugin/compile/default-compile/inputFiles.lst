@@ -4,14 +4,11 @@
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/locationService/service/ReviewService.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/authService/user/User.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/userProfileService/dto/UserProfile.java
-/home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/firestore/FireStoreConfig.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/locationService/service/LocationImagesService.java
-/home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/firestore/AbstractFirestoreRepository.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/authService/token/TokenRepository.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/authService/config/CorsConfig.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/tripPlanService/Repository/ITripPlannerRepository.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/locationService/entity/Event.java
-/home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/firestore/DocumentId.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/locationService/repository/ILocationImagesRepository.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/locationService/controller/LocationController.java
 /home/kasun/Videos/uni-project/trip-planner-backend/src/main/java/com/uok/tripplanner/authService/config/JwtAuthenticationFilter.java
