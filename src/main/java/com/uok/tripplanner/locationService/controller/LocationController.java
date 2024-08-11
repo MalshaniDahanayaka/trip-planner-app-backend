@@ -69,6 +69,13 @@ public class LocationController {
         return preferencesService.getPreferences();
     }
 
+    @PreAuthorize("hasRole('ROLE_MANAGER') and hasRole('ROLE_ADMIN') or hasRole('PREMIUM_USER')")
+    @GetMapping("/preferences/{id}")
+    public List<PreferencesResponseDto> getPreference(@PathVariable Integer id) {
+        log.info("LocationController: getPreference");
+        return preferencesService.getPreference(id);
+    }
+
 
 
 }

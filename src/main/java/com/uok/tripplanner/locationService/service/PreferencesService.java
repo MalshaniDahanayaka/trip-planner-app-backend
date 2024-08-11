@@ -29,4 +29,21 @@ public record PreferencesService (IPreferenceRepository preferenceRepository){
         }
         return preferencesResponseDtos;
     }
+
+    public List<PreferencesResponseDto> getPreference(int id){
+        List<PreferencesResponseDto> preferencesResponseDtos = new ArrayList<>();
+        Set<Preference> preferences = preferenceRepository.findAllByLocationId(id);
+        if(preferences.isEmpty()){
+            return preferencesResponseDtos;
+        }
+        for(Preference preference : preferences) {
+            if(preference.getLocation().getId() == id){
+                preferencesResponseDtos.add(PreferencesResponseDto.builder()
+                        .id(preference.getId())
+                        .preference(preference.getPreference())
+                        .build());
+            }
+        }
+        return preferencesResponseDtos;
+    }
 }
