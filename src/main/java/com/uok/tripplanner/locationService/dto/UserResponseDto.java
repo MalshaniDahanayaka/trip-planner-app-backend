@@ -1,8 +1,7 @@
 package com.uok.tripplanner.locationService.dto;
 
-import com.uok.tripplanner.authService.user.Role;
+import com.uok.tripplanner.authservice.user.Role;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
