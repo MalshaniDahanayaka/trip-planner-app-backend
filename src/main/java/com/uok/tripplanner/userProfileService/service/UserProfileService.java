@@ -1,8 +1,8 @@
 package com.uok.tripplanner.userProfileService.service;
 
 
-import com.uok.tripplanner.authService.user.User;
-import com.uok.tripplanner.authService.user.UserRepository;
+import com.uok.tripplanner.authservice.user.User;
+import com.uok.tripplanner.authservice.user.UserRepository;
 import com.uok.tripplanner.userProfileService.dto.UserProfile;
 import com.uok.tripplanner.userProfileService.dto.UserProfileUpdate;
 import lombok.extern.slf4j.Slf4j;

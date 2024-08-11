@@ -1,7 +1,7 @@
 package com.uok.tripplanner.locationService.entity;
 
 
-import com.uok.tripplanner.authService.user.User;
+import com.uok.tripplanner.authservice.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 

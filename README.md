@@ -1,1 +1,1 @@
-# trip-planner-backend
+# trip-planner-app-backend

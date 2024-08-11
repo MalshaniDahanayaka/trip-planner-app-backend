@@ -1,7 +1,7 @@
 package com.uok.tripplanner.tripPlanService.Service;
 
-import com.uok.tripplanner.authService.user.User;
-import com.uok.tripplanner.authService.user.UserRepository;
+import com.uok.tripplanner.authservice.user.User;
+import com.uok.tripplanner.authservice.user.UserRepository;
 import com.uok.tripplanner.tripPlanService.Repository.ITripPlannerRepository;
 import com.uok.tripplanner.tripPlanService.dto.TripPlannerDto;
 import com.uok.tripplanner.tripPlanService.entity.TripPlans;

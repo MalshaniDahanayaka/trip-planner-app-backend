@@ -14,10 +14,6 @@ import java.util.Set;
 @Service
 public record PreferencesService (IPreferenceRepository preferenceRepository){
 
-    public void addLocationPreferences(List<String> preferencesList, Location savedLocation){
-
-    }
-
     public List<PreferencesResponseDto> getPreferences(){
         List<PreferencesResponseDto> preferencesResponseDtos = new ArrayList<>();
         for(Preference preference : preferenceRepository.findAll()) {

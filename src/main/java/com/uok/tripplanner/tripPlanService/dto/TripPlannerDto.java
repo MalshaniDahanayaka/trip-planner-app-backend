@@ -1,6 +1,5 @@
 package com.uok.tripplanner.tripPlanService.dto;
 
-import com.uok.tripplanner.authService.user.User;
 import com.uok.tripplanner.tripPlanService.dao.SelectEventsAndLocations;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

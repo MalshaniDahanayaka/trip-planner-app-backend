@@ -3,7 +3,8 @@ package com.uok.tripplanner.tripPlanService.entity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.uok.tripplanner.authService.user.User;
+import com.uok.tripplanner.authservice.user.User;
+import com.uok.tripplanner.exception.ErrorCodes;
 import com.uok.tripplanner.tripPlanService.dao.SelectEventsAndLocations;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -46,7 +47,7 @@ public class TripPlans {
         try {
             this.selectEventsAndLocationsListJson = objectMapper.writeValueAsString(selectEventsAndLocationsList);
         } catch (JsonProcessingException e) {
-            log.error("Error serializing selectEventsAndLocationsList", e);
+            log.error(String.valueOf(ErrorCodes.ERROR_SERIALIZING_LIST), e);
         }
     }
 
@@ -55,8 +56,8 @@ public class TripPlans {
         try {
             return objectMapper.readValue(selectEventsAndLocationsListJson, new TypeReference<List<SelectEventsAndLocations>>() {});
         } catch (JsonProcessingException e) {
-            log.error("Error deserializing selectEventsAndLocationsListJson", e);
-            return null;
+            log.error(String.valueOf(ErrorCodes.ERROR_SERIALIZING_LIST), e);
+            return List.of();
         }
     }
 }

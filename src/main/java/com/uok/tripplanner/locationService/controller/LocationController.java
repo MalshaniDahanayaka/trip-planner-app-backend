@@ -5,7 +5,6 @@ import com.uok.tripplanner.locationService.dto.Response.EventResponseDto;
 import com.uok.tripplanner.locationService.dto.Response.LocationResponseDto;
 import com.uok.tripplanner.locationService.dto.Request.ReviewDto;
 import com.uok.tripplanner.locationService.dto.Response.PreferencesResponseDto;
-import com.uok.tripplanner.locationService.entity.Event;
 import com.uok.tripplanner.locationService.service.EventService;
 import com.uok.tripplanner.locationService.service.LocationService;
 import com.uok.tripplanner.locationService.service.PreferencesService;

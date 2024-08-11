@@ -1,7 +1,8 @@
 package com.uok.tripplanner.locationService.service;
 
-import com.uok.tripplanner.authService.user.User;
-import com.uok.tripplanner.authService.user.UserRepository;
+import com.uok.tripplanner.authservice.user.User;
+import com.uok.tripplanner.authservice.user.UserRepository;
+import com.uok.tripplanner.exception.ErrorCodes;
 import com.uok.tripplanner.locationService.dto.Request.LocationDto;
 import com.uok.tripplanner.locationService.dto.Response.*;
 import com.uok.tripplanner.locationService.entity.*;
@@ -54,7 +55,7 @@ public record LocationService(
         try {
             Location savedLocation = iLocationRepository.saveAndFlush(location);
             if(savedLocation.getId() == null){
-                return "Error occurred while saving location";
+                return ErrorCodes.LOCATION_SAVING_ERROR.toString();
             }
             savedLocation.setPreferences(
                     locationDto.getPreferences().stream().map(preference -> Preference.builder()
@@ -77,8 +78,8 @@ public record LocationService(
             iLocationRepository.save(savedLocation);
 
         }catch (Exception e){
-            log.error("Error occurred while saving location", e);
-            return "Error occurred while saving location";
+            log.error(String.valueOf(ErrorCodes.LOCATION_SAVING_ERROR), e);
+            return ErrorCodes.LOCATION_SAVING_ERROR.toString();
         }
 
 
